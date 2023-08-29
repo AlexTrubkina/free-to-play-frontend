@@ -5,7 +5,6 @@ import {
     ButtonGroup,
     Flex,
     HStack,
-    Icon,
     Text,
     useBreakpointValue,
     IconButton,
