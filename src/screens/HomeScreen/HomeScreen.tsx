@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import LayoutPage from "../../layouts/LayOutPage";
 import {
     Icon,
@@ -11,10 +11,22 @@ import {
     Text,
     Box,
 } from "@chakra-ui/react";
+import { getAllGames } from "../../actions/gameActions";
 
 import { FaGamepad } from "react-icons/fa";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import GameCards from "./Components/GameCards";
 
 const HomeScreen = (): JSX.Element => {
+
+    const dispatch = useAppDispatch();
+
+    const allGames = useAppSelector(state => state.allGames);
+
+    useEffect (() => {
+        dispatch(getAllGames())
+    }, [])
+
     return (
         <LayoutPage>
             <Flex backgroundColor="gray.700" h="89vh" alignItems="center">
@@ -74,6 +86,10 @@ const HomeScreen = (): JSX.Element => {
                     </Grid>
                 </Container>
             </Flex>
+            <Box backgroundColor="gray.700">
+                {allGames && <GameCards allGames={allGames}/>}
+            </Box>  
+            
         </LayoutPage>
     );
 };
