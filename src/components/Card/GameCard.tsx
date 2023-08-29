@@ -11,7 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-function Navigation({
+
+
+function GameCard({
     imgUrl,
     shortDescription,
     name,
@@ -20,8 +22,9 @@ function Navigation({
     imgUrl: string;
     shortDescription: string;
     name: string;
-    id: string;
+    id: number;
 }): JSX.Element {
+
     return (
         <Card maxW="sm" backgroundColor="gray.400">
             <CardBody>
@@ -47,4 +50,4 @@ function Navigation({
     );
 }
 
-export default Navigation;
+export default GameCard;
