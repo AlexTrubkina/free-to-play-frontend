@@ -6,6 +6,7 @@
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -51,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "@types/redux": "^3.6.0"
+    "@types/react-redux": "^7.1.26",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0"
   }
 }

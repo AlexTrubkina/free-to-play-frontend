@@ -9,18 +9,23 @@ import {
     ONE_GAME_REQUEST,
     ONE_GAME_SUCCESS,
 } from "../constants/gamesConstants";
-import { AllGamesAction, OneGameAction } from "../types/types";
+import {
+    GamesActionFail,
+    GamesActionSuccess,
+    OneGameActionFail,
+    OneGameActionSuccess,
+} from "../types/types";
 
 export const allGamesReducer = (
     state = { games: [] },
-    action: AllGamesAction
+    action: GamesActionSuccess | GamesActionFail
 ) => {
     switch (action.type) {
         case GAMES_ALL_REQUEST:
             return { ...state, loading: true };
 
         case GAMES_ALL_SUCCESS:
-            return { loading: false, codes: action.payload };
+            return { loading: false, games: action.payload };
 
         case GAMES_ALL_FAIL:
             return { loading: false, error: action.payload };
@@ -32,14 +37,14 @@ export const allGamesReducer = (
 
 export const oneGameReducer = (
     state = { game: {} },
-    action: AllGamesAction
+    action: GamesActionFail | GamesActionSuccess
 ) => {
     switch (action.type) {
         case ONE_GAME_REQUEST:
             return { ...state, loading: true };
 
         case ONE_GAME_SUCCESS:
-            return { loading: false, codes: action.payload };
+            return { loading: false, games: action.payload };
 
         case ONE_GAME_FAIL:
             return { loading: false, error: action.payload };
@@ -51,14 +56,14 @@ export const oneGameReducer = (
 
 export const categoryGamesReducer = (
     state = { games: [] },
-    action: OneGameAction
+    action: OneGameActionFail | OneGameActionSuccess
 ) => {
     switch (action.type) {
         case GAMES_CATEGORY_REQUEST:
             return { ...state, loading: true };
 
         case GAMES_CATEGORY_SUCCESS:
-            return { loading: false, codes: action.payload };
+            return { loading: false, games: action.payload };
 
         case GAMES_CATEGORY_FAIL:
             return { loading: false, error: action.payload };

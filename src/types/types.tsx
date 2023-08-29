@@ -1,4 +1,8 @@
-type allGamesType = {
+import store from "../store";
+
+
+
+export type OneGameType = {
     id: number;
     title: string;
     thumbnail: string;
@@ -10,30 +14,40 @@ type allGamesType = {
     developer: string;
     release_date: string;
     freetogame_profile_url: string;
-}[];
-
-type oneGameType = {
-    id: number;
-    title: string;
-    thumbnail: string;
-    short_description: string;
-    game_url: string;
-    genre: string;
-    platform: string;
-    publisher: string;
-    developer: string;
-    release_date: string;
-    freetogame_profile_url: string;
 }
 
-export interface OneGameAction {
-    type: string,
-    payload: oneGameType
+export interface OneGameActionStart {
+    type: string;
 }
 
-export interface AllGamesAction {
-    type: string,
-    payload: allGamesType
+export interface OneGameActionFail {
+    type: string;
+    payload: string;
 }
 
+export interface OneGameActionSuccess {
+    type: string;
+    payload: OneGameType;
+}
+
+export interface GamesActionStart {
+    type: string;
+}
+
+export interface GamesActionFail {
+    type: string;
+    payload: string;
+}
+
+export interface GamesActionSuccess {
+    type: string;
+    payload: OneGameType[];
+}
+
+export type GamesDispatch = GamesActionStart | GamesActionFail | GamesActionSuccess;
+export type OneGameDispatch = OneGameActionStart | OneGameActionFail | OneGameActionSuccess;
+
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch 
 
