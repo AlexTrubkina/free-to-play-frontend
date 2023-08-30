@@ -7,8 +7,6 @@ import { Flex, Spinner, CardBody, Card, Text } from "@chakra-ui/react";
 import { getAllGames } from "../../actions/gameActions";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
-import { OneGameType } from "../../types/types";
-
 const GamesScreen = (): JSX.Element => {
     const dispatch = useAppDispatch();
 

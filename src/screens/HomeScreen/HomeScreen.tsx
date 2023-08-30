@@ -33,7 +33,7 @@ const HomeScreen = (): JSX.Element => {
     return (
         <LayoutPage>
             <Flex backgroundColor="gray.700" h="89vh" alignItems="center">
-                <Container maxW="70%">
+                <Container maxW={{base: "80%", md: "90%"}}>
                     <Grid
                         alignItems="center"
                         templateColumns={{ base: "1fr", lg: "1.5fr 1fr" }}
@@ -43,7 +43,7 @@ const HomeScreen = (): JSX.Element => {
                             <Heading
                                 mb="20px"
                                 color="gray.100"
-                                size="3xl"
+                                size={{base: "2xl", md: "3xl"}}
                                 fontWeight="bold"
                             >
                                 Сервис с бесплатными играми

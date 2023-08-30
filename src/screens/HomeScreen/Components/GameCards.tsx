@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const GameCards = ({ allGames }: { allGames: OneGameType[] }): JSX.Element => {
     return (
-        <Container maxW="70%" paddingBlock="30px">
+        <Container maxW={{md: "70%", base: "95%"}} paddingBlock="30px">
             <Flex flexDirection="column">
                 <Flex
                     flexWrap="wrap"

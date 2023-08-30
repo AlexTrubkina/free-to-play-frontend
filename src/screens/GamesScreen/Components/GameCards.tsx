@@ -19,7 +19,7 @@ const GameCards = ({ allGames }: { allGames : OneGameType[]}): JSX.Element => {
 
     return (
     
-        <Container maxW="70%" paddingBlock="30px">
+        <Container maxW={{base: "95%", md: "70%"}} paddingBlock="30px">
             <Flex flexDirection="column">
             <Pagination allPages={allPages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
             <Flex flexWrap="wrap" justifyContent="center" gap="40px" marginBottom="30px">
