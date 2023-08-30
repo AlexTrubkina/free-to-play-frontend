@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { useParams } from "react-router-dom";
 import GameHeader from "./Components/GameHeader";
 import GameDescription from "./Components/GameDescription";
+import ScreenshotsCarousel from "./Components/ScreenshotsCarousel";
 
 const GameScreen = (): JSX.Element => {
     const { gameId } = useParams();
@@ -27,10 +28,10 @@ const GameScreen = (): JSX.Element => {
                     <Container maxW={{base: "90%", md: "80%"}} paddingBlock="40px">
                         <GameHeader oneGame={oneGame} />
                         <GameDescription oneGame={oneGame}/>
-                        <Heading color="gray.200" marginTop="40px">
+                        <Heading color="gray.200" marginBlock="40px">
                             Скриншоты игры
                         </Heading>
-
+                        <ScreenshotsCarousel oneGame={oneGame} />
                     </Container>
                 )}
             </Box>
