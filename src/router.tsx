@@ -3,6 +3,7 @@ import HomeScreen from "./screens/HomeScreen/HomeScreen";
 import GamesScreen from "./screens/GamesScreen/GamesScreen";
 import GamesCategoryScreen from "./screens/GamesCategoryScreen/GamesCategoryScreen";
 import GameScreen from "./screens/GameScreen/GameScreen";
+import PageNotFound from "./screens/PageNotFound/PageNotFound";
 
 export const router = createBrowserRouter([
     {
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
     {
         path: "games/game/:gameId",
         element: <GameScreen />
+    }, 
+    {
+        path: "*",
+        element: <PageNotFound />
     }
 ]);
