@@ -50,16 +50,16 @@ function Navigation(): JSX.Element {
                         <ButtonGroup variant="link" spacing="8">
                             {navLinks.map((item) =>
                                 item.subMenu ? (
-                                    <Menu>
+                                    <Menu key={item.link}>
                                         <MenuButton as={Button}>
                                             {item.page}
                                         </MenuButton>
                                         <MenuList>
                                             {item.subMenu.map((subPage) => (
                                                 <NavLink
+                                                    key={subPage.link}
                                                     to={
-                                                        item.link +
-                                                        subPage.link
+                                                        item.link + subPage.link
                                                     }
                                                 >
                                                     <MenuItem>
@@ -108,11 +108,35 @@ function Navigation(): JSX.Element {
 
                     <DrawerBody>
                         <Flex flexDirection="column" gap="4" alignItems="start">
-                            {navLinks.map((item) => (
-                                <NavLink key={item.page} to={item.link}>
-                                    <Button variant="ghost">{item.page}</Button>
-                                </NavLink>
-                            ))}
+                            {navLinks.map((item) =>
+                                item.subMenu ? (
+                                    <Menu key={item.link}>
+                                        <MenuButton variant="link" as={Button}>
+                                            {item.page}
+                                        </MenuButton>
+                                        <MenuList>
+                                            {item.subMenu.map((subPage) => (
+                                                <NavLink
+                                                    key={subPage.link}
+                                                    to={
+                                                        item.link + subPage.link
+                                                    }
+                                                >
+                                                    <MenuItem>
+                                                        {subPage.page}
+                                                    </MenuItem>
+                                                </NavLink>
+                                            ))}
+                                        </MenuList>
+                                    </Menu>
+                                ) : (
+                                    <NavLink to={item.link} key={item.page}>
+                                        <Button variant="link" key={item.page}>
+                                            {item.page}
+                                        </Button>
+                                    </NavLink>
+                                )
+                            )}
                         </Flex>
                     </DrawerBody>
                 </DrawerContent>

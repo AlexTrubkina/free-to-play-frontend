@@ -4,13 +4,14 @@ import {composeWithDevTools} from "redux-devtools-extension";
 
 import {
     allGamesReducer,
-    categoryGamesReducer
+    categoryGamesReducer, 
+    oneGameReducer
 } from "./reducers/gameReducers";
 
 const reducer = combineReducers({
     allGames: allGamesReducer,
     categoryGames: categoryGamesReducer, 
-    
+    oneGame : oneGameReducer
 });
 
 const initialState = {}

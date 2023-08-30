@@ -44,7 +44,7 @@ export const oneGameReducer = (
             return { ...state, loading: true };
 
         case ONE_GAME_SUCCESS:
-            return { loading: false, games: action.payload };
+            return { loading: false, game: action.payload };
 
         case ONE_GAME_FAIL:
             return { loading: false, error: action.payload };
