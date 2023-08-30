@@ -14,7 +14,11 @@ import {
     DrawerBody,
     DrawerContent,
     DrawerCloseButton,
-    DrawerHeader
+    DrawerHeader,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
 } from "@chakra-ui/react";
 
 import { FiMenu } from "react-icons/fi";
@@ -35,7 +39,6 @@ function Navigation(): JSX.Element {
         <Box as="nav" backgroundColor="#272b30">
             <HStack py="4" px="20px" spacing="10" justify="space-between">
                 <Flex gap="20px" alignItems="center">
-                    
                     <NavLink to="/">
                         <Text fontWeight="bold" color="gray.200" fontSize="xl">
                             Free To Play
@@ -45,15 +48,36 @@ function Navigation(): JSX.Element {
                 {isDesktop ? (
                     <Flex justify="space-between" flex="1">
                         <ButtonGroup variant="link" spacing="8">
-                            {navLinks.map((item) => (
-                                <NavLink to={item.link} key={item.page}>
-                                    <Button variant="link" key={item.page}>
-                                        {item.page}
-                                    </Button>
-                                </NavLink>
-                            ))}
+                            {navLinks.map((item) =>
+                                item.subMenu ? (
+                                    <Menu>
+                                        <MenuButton as={Button}>
+                                            {item.page}
+                                        </MenuButton>
+                                        <MenuList>
+                                            {item.subMenu.map((subPage) => (
+                                                <NavLink
+                                                    to={
+                                                        item.link +
+                                                        subPage.link
+                                                    }
+                                                >
+                                                    <MenuItem>
+                                                        {subPage.page}
+                                                    </MenuItem>
+                                                </NavLink>
+                                            ))}
+                                        </MenuList>
+                                    </Menu>
+                                ) : (
+                                    <NavLink to={item.link} key={item.page}>
+                                        <Button variant="link" key={item.page}>
+                                            {item.page}
+                                        </Button>
+                                    </NavLink>
+                                )
+                            )}
                         </ButtonGroup>
-                        
                     </Flex>
                 ) : (
                     <IconButton
@@ -75,7 +99,6 @@ function Navigation(): JSX.Element {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>
-                        
                         <NavLink to="/">
                             <Text fontWeight="bold" fontSize="xl">
                                 Free To Play
@@ -87,11 +110,8 @@ function Navigation(): JSX.Element {
                         <Flex flexDirection="column" gap="4" alignItems="start">
                             {navLinks.map((item) => (
                                 <NavLink key={item.page} to={item.link}>
-                                    <Button variant="ghost" >
-                                    {item.page}
-                                </Button>
+                                    <Button variant="ghost">{item.page}</Button>
                                 </NavLink>
-                                
                             ))}
                         </Flex>
                     </DrawerBody>

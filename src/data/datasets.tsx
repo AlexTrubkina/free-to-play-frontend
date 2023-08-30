@@ -1,10 +1,34 @@
-export const navLinks: {link: string, page: string}[] = [
+import { NavLinkType } from "../types/types";
+
+export const navLinks: NavLinkType = [
     {
         link: "/games",
         page: "Все игры"
     },
     {
+        page: "Жанры",
         link: "/games",
-        page: "Жанры"
+        subMenu : [
+            {
+                page: "Shooter",
+                link: "/shooter"
+            }, 
+            {
+                page: "Anime", 
+                link: "/anime"
+            }, 
+            {
+                page: "Strategy",
+                link: "/strategy"
+            }, 
+            {
+                page: "Fantasy",
+                link: "/fantasy"
+            }, 
+            {
+                page: "Fighting",
+                link: "/fighting"
+            }
+        ]
     },
 ];

@@ -1,7 +1,5 @@
 import store from "../store";
 
-
-
 export type OneGameType = {
     id: number;
     title: string;
@@ -14,7 +12,7 @@ export type OneGameType = {
     developer: string;
     release_date: string;
     freetogame_profile_url: string;
-}
+};
 
 export interface OneGameActionStart {
     type: string;
@@ -44,10 +42,30 @@ export interface GamesActionSuccess {
     payload: OneGameType[];
 }
 
-export type GamesDispatch = GamesActionStart | GamesActionFail | GamesActionSuccess;
-export type OneGameDispatch = OneGameActionStart | OneGameActionFail | OneGameActionSuccess;
+export type GamesDispatch =
+    | GamesActionStart
+    | GamesActionFail
+    | GamesActionSuccess;
+export type OneGameDispatch =
+    | OneGameActionStart
+    | OneGameActionFail
+    | OneGameActionSuccess;
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 
-export type AppDispatch = typeof store.dispatch 
+export type AppDispatch = typeof store.dispatch;
+
+type NavLinkSubMenuItem = {
+    link: string;
+    page: string;
+};
+
+export type NavLinkType = {
+    link: string;
+    page: string;
+    subMenu?: NavLinkSubMenuItem[];
+}[];
+
+
+
 
