@@ -16,6 +16,7 @@ import { getAllGames } from "../../actions/gameActions";
 import { FaGamepad } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import GameCards from "./Components/GameCards";
+import { Link } from "react-router-dom";
 
 const HomeScreen = (): JSX.Element => {
 
@@ -49,9 +50,12 @@ const HomeScreen = (): JSX.Element => {
                                 Попробуйте его прямо сейчаc
                             </Text>
                             <Flex direction="row" flexWrap="wrap" gap="20px">
-                                <Button colorScheme="gray" variant="solid">
-                                    Посмотреть все игры
-                                </Button>
+                                <Link to="/games">
+                                    <Button colorScheme="gray" variant="solid">
+                                        Посмотреть все игры
+                                    </Button>
+                                </Link>
+                                
                                 <Button colorScheme="linkedin">
                                     Больше жанров
                                 </Button>

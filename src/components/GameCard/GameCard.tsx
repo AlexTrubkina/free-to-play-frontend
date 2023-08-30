@@ -39,7 +39,7 @@ function GameCard({
                 </Stack>
             </CardBody>
             <CardFooter>
-                <Link to={`games/game/${id}`}>
+                <Link to={`/games/game/${id}`}>
                     <Button variant="solid" colorScheme="blue">
                         Перейти на страницу игры
                     </Button>

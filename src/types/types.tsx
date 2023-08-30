@@ -12,6 +12,7 @@ export type OneGameType = {
     developer: string;
     release_date: string;
     freetogame_profile_url: string;
+    description: string;
 };
 
 export interface OneGameActionStart {

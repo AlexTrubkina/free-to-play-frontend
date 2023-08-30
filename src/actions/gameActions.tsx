@@ -13,7 +13,7 @@ import {
 import { GamesDispatch, OneGameDispatch } from "../types/types";
 
 export const getOneGame =
-    (id: number) => async (dispatch: Dispatch<OneGameDispatch>) => {
+    (id: string | undefined) => async (dispatch: Dispatch<OneGameDispatch>) => {
         try {
             dispatch({
                 type: ONE_GAME_REQUEST,
@@ -24,18 +24,21 @@ export const getOneGame =
                 method: "GET",
                 headers: {
                     "Content-type": "application/json",
+                    'X-RapidAPI-Key': '47e6d7d9f0mshb9dac613d61c3aep19bee8jsn3840813c2e1f',
+                    'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
                 },
             };
 
             const response = await fetch(
-                `https://www.freetogame.com/api/game?id=${id}`,
+                `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`,
                 config
             );
 
             if (response.ok) {
+                const data = await response.json()
                 dispatch({
                     type: ONE_GAME_SUCCESS,
-                    payload: response.json(),
+                    payload: data,
                 });
             }
             switch (response.status) {
