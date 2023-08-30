@@ -84,6 +84,7 @@ function Navigation(): JSX.Element {
                         onClick={onOpen}
                         ref={mobileToggle}
                         variant="outline"
+                        colorScheme="blue"
                         aria-label="Open Menu"
                         icon={<FiMenu fontSize="1.25rem" />}
                     />
@@ -94,13 +95,14 @@ function Navigation(): JSX.Element {
                 placement="left"
                 onClose={onClose}
                 finalFocusRef={mobileToggle}
+                
             >
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent backgroundColor="gray.600">
                     <DrawerCloseButton />
                     <DrawerHeader>
                         <NavLink to="/">
-                            <Text fontWeight="bold" fontSize="xl">
+                            <Text fontWeight="bold" fontSize="xl" color="gray.200">
                                 Free To Play
                             </Text>
                         </NavLink>

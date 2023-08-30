@@ -57,10 +57,11 @@ const HomeScreen = (): JSX.Element => {
                                         Посмотреть все игры
                                     </Button>
                                 </Link>
-
-                                <Button colorScheme="linkedin">
-                                    Больше жанров
-                                </Button>
+                                <Link to="/games">
+                                    <Button colorScheme="linkedin">
+                                        Больше жанров
+                                    </Button>
+                                </Link>
                             </Flex>
                         </GridItem>
                         <GridItem
@@ -99,19 +100,13 @@ const HomeScreen = (): JSX.Element => {
                 minH="100vh"
             >
                 {loading ? (
-                    <Spinner
-                        thickness="10px"
-                        color="blue.500"
-                        size="xl"
-                    />
+                    <Spinner thickness="10px" color="blue.500" size="xl" />
                 ) : games ? (
                     <GameCards allGames={games} />
                 ) : (
                     <Card backgroundColor="red.100">
                         <CardBody>
-                            <Text>
-                                {error}
-                            </Text>
+                            <Text>{error}</Text>
                         </CardBody>
                     </Card>
                 )}
