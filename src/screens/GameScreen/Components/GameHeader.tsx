@@ -36,6 +36,7 @@ const GameHeader = ({ oneGame }: { oneGame: OneGameType }) => {
                     <Text py="2"> Жанр: {oneGame.genre}</Text>
                     <Text py="2"> Платформа: {oneGame.platform}</Text>
                     <Text py="2"> Разработчик: {oneGame.developer}</Text>
+                    <Text py="2"> Дата релиза: {oneGame.release_date}</Text>
                 </CardBody>
                 <CardFooter padding="20px">
                     <Link to={oneGame.game_url}>
