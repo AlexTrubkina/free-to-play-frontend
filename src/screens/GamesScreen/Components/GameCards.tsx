@@ -6,14 +6,14 @@ import {
 import { OneGameType } from "../../../types/types";
 import GameCard from "../../../components/GameCard/GameCard";
 
-const GameCards = ({ allGames }: { allGames: {games : OneGameType[]}}): JSX.Element => {
+const GameCards = ({ allGames }: { allGames : OneGameType[]}): JSX.Element => {
 
     return (
     
         <Container maxW="70%" paddingBlock="30px">
             <Flex flexDirection="column">
             <Flex flexWrap="wrap" justifyContent="center" gap="40px" marginBottom="30px">
-                {allGames.games && allGames.games.map((value) => (
+                {allGames.map((value) => (
                     <GameCard
                         key={value.id}
                         imgUrl={value.thumbnail}

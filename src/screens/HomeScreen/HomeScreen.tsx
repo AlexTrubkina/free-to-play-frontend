@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import LayoutPage from "../../layouts/LayOutPage";
 import {
     Icon,
@@ -10,6 +10,9 @@ import {
     Heading,
     Text,
     Box,
+    Spinner,
+    Card,
+    CardBody,
 } from "@chakra-ui/react";
 import { getAllGames } from "../../actions/gameActions";
 
@@ -19,14 +22,13 @@ import GameCards from "./Components/GameCards";
 import { Link } from "react-router-dom";
 
 const HomeScreen = (): JSX.Element => {
-
     const dispatch = useAppDispatch();
 
-    const allGames = useAppSelector(state => state.allGames);
+    const { games, loading, error } = useAppSelector((state) => state.allGames);
 
-    useEffect (() => {
-        dispatch(getAllGames())
-    }, [])
+    useEffect(() => {
+        dispatch(getAllGames());
+    }, []);
 
     return (
         <LayoutPage>
@@ -55,7 +57,7 @@ const HomeScreen = (): JSX.Element => {
                                         Посмотреть все игры
                                     </Button>
                                 </Link>
-                                
+
                                 <Button colorScheme="linkedin">
                                     Больше жанров
                                 </Button>
@@ -90,10 +92,30 @@ const HomeScreen = (): JSX.Element => {
                     </Grid>
                 </Container>
             </Flex>
-            <Box backgroundColor="gray.700">
-                {allGames && <GameCards allGames={allGames}/>}
-            </Box>  
-            
+            <Flex
+                justifyContent="center"
+                backgroundColor="gray.700"
+                alignItems="center"
+                minH="100vh"
+            >
+                {loading ? (
+                    <Spinner
+                        thickness="10px"
+                        color="blue.500"
+                        size="xl"
+                    />
+                ) : games ? (
+                    <GameCards allGames={games} />
+                ) : (
+                    <Card backgroundColor="red.100">
+                        <CardBody>
+                            <Text>
+                                {error}
+                            </Text>
+                        </CardBody>
+                    </Card>
+                )}
+            </Flex>
         </LayoutPage>
     );
 };

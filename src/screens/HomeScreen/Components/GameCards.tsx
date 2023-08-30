@@ -4,11 +4,7 @@ import { OneGameType } from "../../../types/types";
 import GameCard from "../../../components/GameCard/GameCard";
 import { Link } from "react-router-dom";
 
-const GameCards = ({
-    allGames,
-}: {
-    allGames: { games: OneGameType[] };
-}): JSX.Element => {
+const GameCards = ({ allGames }: { allGames: OneGameType[] }): JSX.Element => {
     return (
         <Container maxW="70%" paddingBlock="30px">
             <Flex flexDirection="column">
@@ -18,23 +14,18 @@ const GameCards = ({
                     gap="40px"
                     marginBottom="30px"
                 >
-                    {allGames.games &&
-                        allGames.games
-                            .slice(0, 6)
-                            .map((value) => (
-                                <GameCard
-                                    key={value.id}
-                                    imgUrl={value.thumbnail}
-                                    shortDescription={value.short_description}
-                                    name={value.title}
-                                    id={value.id}
-                                />
-                            ))}
+                    {allGames.slice(0, 6).map((value) => (
+                        <GameCard
+                            key={value.id}
+                            imgUrl={value.thumbnail}
+                            shortDescription={value.short_description}
+                            name={value.title}
+                            id={value.id}
+                        />
+                    ))}
                 </Flex>
-                <Link to="/games" style={{marginInline: "auto"}}>
-                    <Button colorScheme="linkedin">
-                        Посмотреть все игры
-                    </Button>
+                <Link to="/games" style={{ marginInline: "auto" }}>
+                    <Button colorScheme="linkedin">Посмотреть все игры</Button>
                 </Link>
             </Flex>
         </Container>
