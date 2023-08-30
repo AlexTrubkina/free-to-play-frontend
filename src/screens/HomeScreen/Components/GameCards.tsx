@@ -31,8 +31,8 @@ const GameCards = ({
                                 />
                             ))}
                 </Flex>
-                <Link to="/games">
-                    <Button colorScheme="linkedin" marginInline="auto">
+                <Link to="/games" style={{marginInline: "auto"}}>
+                    <Button colorScheme="linkedin">
                         Посмотреть все игры
                     </Button>
                 </Link>
