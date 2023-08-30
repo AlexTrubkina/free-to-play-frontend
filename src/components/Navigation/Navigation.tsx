@@ -46,7 +46,11 @@ function Navigation(): JSX.Element {
                     <Flex justify="space-between" flex="1">
                         <ButtonGroup variant="link" spacing="8">
                             {navLinks.map((item) => (
-                                <Button key={item}>{item}</Button>
+                                <NavLink to={item.link} key={item.page}>
+                                    <Button variant="link" key={item.page}>
+                                        {item.page}
+                                    </Button>
+                                </NavLink>
                             ))}
                         </ButtonGroup>
                         
@@ -82,9 +86,12 @@ function Navigation(): JSX.Element {
                     <DrawerBody>
                         <Flex flexDirection="column" gap="4" alignItems="start">
                             {navLinks.map((item) => (
-                                <Button variant="ghost" key={item}>
-                                    {item}
+                                <NavLink key={item.page} to={item.link}>
+                                    <Button variant="ghost" >
+                                    {item.page}
                                 </Button>
+                                </NavLink>
+                                
                             ))}
                         </Flex>
                     </DrawerBody>

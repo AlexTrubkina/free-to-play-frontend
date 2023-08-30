@@ -14,7 +14,7 @@ const GameCards = ({ allGames }: { allGames: {games : OneGameType[]}}): JSX.Elem
         <Container maxW="70%" paddingBlock="30px">
             <Flex flexDirection="column">
             <Flex flexWrap="wrap" justifyContent="center" gap="40px" marginBottom="30px">
-                {allGames.games && allGames.games.slice(0, 6).map((value) => (
+                {allGames.games && allGames.games.map((value) => (
                     <GameCard
                         key={value.id}
                         imgUrl={value.thumbnail}
@@ -24,9 +24,6 @@ const GameCards = ({ allGames }: { allGames: {games : OneGameType[]}}): JSX.Elem
                     />
                 ))}
             </Flex>
-            <Button colorScheme="linkedin" marginInline="auto">
-                Посмотреть все игры
-            </Button>
             </Flex>
             
         </Container>
