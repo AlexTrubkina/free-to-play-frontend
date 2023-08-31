@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutPage from "../../layouts/LayOutPage";
 import GameCards from "./Components/GameCards";
 
-import { Flex, Heading, Spinner, Card, CardBody, Text } from "@chakra-ui/react";
+import { Flex, Heading, Spinner } from "@chakra-ui/react";
 
 import { getGamesByCategory } from "../../actions/gameActions";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
 import { useParams } from "react-router-dom";
+import ErrorCard from "../../components/ErrorCard/ErrorCard";
 
 const GamesCategoryScreen = (): JSX.Element => {
     let { slug } = useParams();
 
     const dispatch = useAppDispatch();
+    const [counterReloadAttempts, setCounterReloadAttempts] = useState(0);
 
     const { games, loading, error } = useAppSelector((state) => state.categoryGames);
 
@@ -36,13 +38,7 @@ const GamesCategoryScreen = (): JSX.Element => {
                 ) : games ? (
                     <GameCards categoryGames={games} />
                 ) : (
-                    <Card backgroundColor="red.100">
-                        <CardBody>
-                            <Text>
-                                {error}
-                            </Text>
-                        </CardBody>
-                    </Card>
+                    <ErrorCard error={error} counter={counterReloadAttempts} setCounter={setCounterReloadAttempts} action={getGamesByCategory} />
                 )}
             </Flex>
         </LayoutPage>

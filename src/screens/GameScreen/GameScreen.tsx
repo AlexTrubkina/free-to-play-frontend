@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutPage from "../../layouts/LayOutPage";
 
 import {
@@ -17,11 +17,14 @@ import { useParams } from "react-router-dom";
 import GameHeader from "./Components/GameHeader";
 import GameDescription from "./Components/GameDescription";
 import ScreenshotsCarousel from "./Components/ScreenshotsCarousel";
+import ErrorCard from "../../components/ErrorCard/ErrorCard";
 
 const GameScreen = (): JSX.Element => {
     const { gameId } = useParams();
 
     const dispatch = useAppDispatch();
+
+    const [counterReloadAttempts, setCounterReloadAttempts] = useState(0);
 
     const { game, loading, error } = useAppSelector((state) => state.oneGame);
 
@@ -52,13 +55,7 @@ const GameScreen = (): JSX.Element => {
                         <ScreenshotsCarousel oneGame={game} />
                     </Container>
                 ) : (
-                    <Card backgroundColor="red.100">
-                        <CardBody>
-                            <Text>
-                                {error}
-                            </Text>
-                        </CardBody>
-                    </Card>
+                    <ErrorCard error={error} counter={counterReloadAttempts} setCounter={setCounterReloadAttempts} action={getOneGame(gameId)} />
                 )}
             </Flex>
         </LayoutPage>

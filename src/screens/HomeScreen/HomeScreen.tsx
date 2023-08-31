@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutPage from "../../layouts/LayOutPage";
 import {
     Icon,
@@ -10,9 +10,7 @@ import {
     Heading,
     Text,
     Box,
-    Spinner,
-    Card,
-    CardBody,
+    Spinner
 } from "@chakra-ui/react";
 import { getAllGames } from "../../actions/gameActions";
 
@@ -20,11 +18,13 @@ import { FaGamepad } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import GameCards from "./Components/GameCards";
 import { Link } from "react-router-dom";
+import ErrorCard from "../../components/ErrorCard/ErrorCard";
 
 const HomeScreen = (): JSX.Element => {
     const dispatch = useAppDispatch();
 
     const { games, loading, error } = useAppSelector((state) => state.allGames);
+    const [counterReloadAttempts, setCounterReloadAttempts] = useState(0);
 
     useEffect(() => {
         dispatch(getAllGames());
@@ -104,11 +104,7 @@ const HomeScreen = (): JSX.Element => {
                 ) : games ? (
                     <GameCards allGames={games} />
                 ) : (
-                    <Card backgroundColor="red.100">
-                        <CardBody>
-                            <Text>{error}</Text>
-                        </CardBody>
-                    </Card>
+                    <ErrorCard counter={counterReloadAttempts} setCounter={setCounterReloadAttempts} error={error} action={getAllGames} />
                 )}
             </Flex>
         </LayoutPage>
