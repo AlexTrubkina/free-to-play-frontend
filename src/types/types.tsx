@@ -13,10 +13,10 @@ export type OneGameType = {
     release_date: string;
     freetogame_profile_url: string;
     description: string;
-    screenshots : {
-        id: number,
-        image: string
-    }[]
+    screenshots: {
+        id: number;
+        image: string;
+    }[];
 };
 
 export interface OneGameActionStart {
@@ -70,7 +70,3 @@ export type NavLinkType = {
     page: string;
     subMenu?: NavLinkSubMenuItem[];
 }[];
-
-
-
-

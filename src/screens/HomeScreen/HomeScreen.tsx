@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LayoutPage from "../../layouts/LayOutPage";
-import {
-    Flex,
-    Spinner
-} from "@chakra-ui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import { getAllGames } from "../../actions/gameActions";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import GameCards from "./Components/GameCards";
@@ -35,7 +32,12 @@ const HomeScreen = (): JSX.Element => {
                 ) : games ? (
                     <GameCards allGames={games} />
                 ) : (
-                    <ErrorCard counter={counterReloadAttempts} setCounter={setCounterReloadAttempts} error={error} action={getAllGames} />
+                    <ErrorCard
+                        counter={counterReloadAttempts}
+                        setCounter={setCounterReloadAttempts}
+                        error={error}
+                        action={getAllGames}
+                    />
                 )}
             </Flex>
         </LayoutPage>

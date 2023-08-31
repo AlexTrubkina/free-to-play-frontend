@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LayoutPage from "../../layouts/LayOutPage";
 
-import {
-    Flex,
-    Container,
-    Heading,
-    Spinner,
-    Card,
-    CardBody,
-    Text,
-} from "@chakra-ui/react";
+import { Flex, Container, Heading, Spinner } from "@chakra-ui/react";
 
 import { getOneGame } from "../../actions/gameActions";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
@@ -55,7 +47,12 @@ const GameScreen = (): JSX.Element => {
                         <ScreenshotsCarousel oneGame={game} />
                     </Container>
                 ) : (
-                    <ErrorCard error={error} counter={counterReloadAttempts} setCounter={setCounterReloadAttempts} action={getOneGame(gameId)} />
+                    <ErrorCard
+                        error={error}
+                        counter={counterReloadAttempts}
+                        setCounter={setCounterReloadAttempts}
+                        action={getOneGame(gameId)}
+                    />
                 )}
             </Flex>
         </LayoutPage>

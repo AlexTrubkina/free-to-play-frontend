@@ -22,7 +22,7 @@ const GameHeader = ({ oneGame }: { oneGame: OneGameType }) => {
         >
             <Image
                 objectFit="contain"
-                maxW={{ base: "100%"}}
+                maxW={{ base: "100%" }}
                 width="100%"
                 src={oneGame.thumbnail}
                 alt="Caffe Latte"

@@ -31,7 +31,12 @@ const GamesScreen = (): JSX.Element => {
                 ) : games ? (
                     <GameCards allGames={games} />
                 ) : (
-                    <ErrorCard counter={counterReloadAttempts} setCounter={setCounterReloadAttempts} error={error} action={getAllGames} />
+                    <ErrorCard
+                        counter={counterReloadAttempts}
+                        setCounter={setCounterReloadAttempts}
+                        error={error}
+                        action={getAllGames}
+                    />
                 )}
             </Flex>
         </LayoutPage>
